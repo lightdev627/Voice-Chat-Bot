@@ -26,7 +26,7 @@ class Config:
         self.deepgram_api_key = os.getenv("DEEPGRAM_API_KEY")
         
         # Models
-        self.llm_model = "llama3-8b-8192"
+        self.llm_model = "llama-3.1-8b-instant"
         self.stt_model = "nova-2"
         self.tts_model = "aura-helios-en"
         
@@ -222,18 +222,22 @@ class VoiceAssistant:
 
 async def main():
     """Initializes and runs the Voice Assistant."""
+    import os
     try:
         config = Config()
         assistant = VoiceAssistant(config)
         await assistant.run()
     except (ValueError, FileNotFoundError, RuntimeError) as e:
         print(f"Configuration Error: {e}")
-        sys.exit(1)
+        os._exit(1)
     except KeyboardInterrupt:
         print("\n--- Assistant Deactivated by User ---")
+        os._exit(0)
     except Exception as e:
         print(f"An unexpected fatal error occurred: {e}")
-        sys.exit(1)
+        os._exit(1)
+    finally:
+        os._exit(0)
 
 if __name__ == "__main__":
     asyncio.run(main())

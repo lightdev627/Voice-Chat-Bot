@@ -96,4 +96,9 @@ async def transcribe_from_microphone():
         print(f"An error occurred: {ex}")
 
 if __name__ == "__main__":
-    asyncio.run(transcribe_from_microphone())
+    import os
+    try:
+        asyncio.run(transcribe_from_microphone())
+    finally:
+        os._exit(0)
+

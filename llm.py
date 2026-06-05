@@ -26,7 +26,7 @@ def run_batch(prompt_text: str):
     Runs a single-shot (batch) completion.
     """
     chain = create_chain(
-        model_name="llama3-70b-8192",
+        model_name="llama-3.1-8b-instant",
         system_message="You are an AI assistant designed to provide helpful answers.",
         user_placeholder="{input}"
     )
@@ -38,7 +38,7 @@ def run_streaming(prompt_text: str):
     Runs streaming completion and prints output as it arrives.
     """
     chain = create_chain(
-        model_name="llama3-70b-8192",
+        model_name="llama-3.1-8b-instant",
         system_message="You are an AI assistant that provides thoughtful, detailed responses.",
         user_placeholder="{input}"
     )

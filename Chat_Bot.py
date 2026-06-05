@@ -20,7 +20,7 @@ class LanguageModelProcessor:
         groq_api_key = os.getenv("GROQ_API_KEY")
         
         if groq_api_key:
-            self.llm = ChatGroq(temperature=0, model_name="llama3-8b-8192", groq_api_key=groq_api_key)
+            self.llm = ChatGroq(temperature=0, model_name="llama-3.1-8b-instant", groq_api_key=groq_api_key)
         else:
             raise ValueError("GROQ_API_KEY not found in environment variables. Please set one.")
 
